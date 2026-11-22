@@ -1,10 +1,12 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import employeeRoutes from './routes/employeeRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 const app = express();
 
 // global middleware
-app.use(express.json());
+app.use(express.json());    // extract data from body
+app.use(cookieParser());    // extract data from cookies (cookies are attached on the header of request)
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
